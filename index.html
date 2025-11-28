@@ -230,5 +230,29 @@
         updateTip();
     </script>
 
+        <audio id="audio1" src="music1.mp3"></audio>
+    <audio id="audio2" src="music2.mp3"></audio>
+    
+    <script>
+        const audio1 = document.getElementById("audio1");
+        const audio2 = document.getElementById("audio2");
+    
+        // Volume très bas
+        audio1.volume = 0.08;
+        audio2.volume = 0.08;
+    
+        // Autoplay après un petit délai pour éviter les blocages
+        setTimeout(() => {
+            audio1.play().catch(() => {});
+        }, 300);
+    
+        // Quand la musique 1 se termine -> transition vers musique 2
+        audio1.addEventListener("ended", () => {
+            audio2.currentTime = 0;
+            audio2.play().catch(() => {});
+        });
+    </script>
+
+    
 </body>
 </html>
