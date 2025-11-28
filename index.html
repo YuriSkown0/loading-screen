@@ -36,12 +36,16 @@
 
         /* Logo */
         .logo {
-            margin-top: 10vh;
-            font-size: 4rem;
-            font-weight: bold;
-            letter-spacing: 4px;
-            animation: fadeIn 2s ease;
+        margin-top: 8vh;
+        animation: fadeIn 2s ease;
         }
+        
+        .logo img {
+            width: 400px;      /* Taille du logo */
+            max-width: 80%;    /* Responsivité */
+            height: auto;
+        }
+
 
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -90,7 +94,10 @@
 <body>
     <div class="background"></div>
 
-    <div class="logo">PANDORA</div>
+    <div class="logo">
+        <img src="logopandora.png" alt="Pandora Logo">
+    </div>
+
 
     <div class="loading-container">
         <div class="loading-bar"></div>
