@@ -83,3 +83,147 @@
         @keyframes load {
             0% { width: 0%; }
             100% { width: 100%; }
+        }
+
+        /* Tips */
+        .tip {
+            margin-top: 40px;
+            font-size: 1.3rem;
+            opacity: 0;
+            animation: fadeTips 6s infinite;
+        }
+
+        @keyframes fadeTips {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            40% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* GIF bottom-left + red glow */
+        .gif-bottom {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 150px;
+            height: auto;
+            z-index: 10;
+            animation: fadeIn 1.5s ease, gifGlow 2s infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes gifGlow {
+            0% {
+                filter: drop-shadow(0 0 8px #ff0000);
+            }
+            100% {
+                filter: drop-shadow(0 0 22px #ff2a2a);
+            }
+        }
+
+        /* TEXT à côté du GIF */
+        .loading-text {
+            position: fixed;
+            bottom: 90px;
+            left: 200px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ffffff;
+            display: flex;
+            gap: 2px;
+            pointer-events: none;
+        }
+
+        /* Animation vague bounce */
+        .loading-text span {
+            display: inline-block;
+            animation: waveBounce 1.5s infinite;
+        }
+
+        @keyframes waveBounce {
+            0% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+            60% { transform: translateY(0); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Décalage entre les lettres (vague) */
+        .loading-text span:nth-child(n) {
+            animation-delay: calc((var(--i) * 0.05s));
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <div class="logo">
+        <img src="logopandora.png" alt="Pandora Logo">
+    </div>
+
+    <div class="loading-container">
+        <div class="loading-bar"></div>
+    </div>
+
+    <div class="tip" id="tipText">Astuce chargée...</div>
+
+    <!-- GIF Bottom Left -->
+    <img src="logogif.png" class="gif-bottom" alt="Mascotte Pandora">
+
+    <!-- Texte en vague -->
+    <div class="loading-text">
+        <!-- Chaque lettre numérotée -->
+        <span style="--i:1">V</span>
+        <span style="--i:2">o</span>
+        <span style="--i:3">t</span>
+        <span style="--i:4">r</span>
+        <span style="--i:5">e</span>
+        <span style="--i:6">&nbsp;</span>
+        <span style="--i:7">s</span>
+        <span style="--i:8">e</span>
+        <span style="--i:9">r</span>
+        <span style="--i:10">v</span>
+        <span style="--i:11">e</span>
+        <span style="--i:12">u</span>
+        <span style="--i:13">r</span>
+        <span style="--i:14">&nbsp;</span>
+        <span style="--i:15">e</span>
+        <span style="--i:16">s</span>
+        <span style="--i:17">t</span>
+        <span style="--i:18">&nbsp;</span>
+        <span style="--i:19">e</span>
+        <span style="--i:20">n</span>
+        <span style="--i:21">&nbsp;</span>
+        <span style="--i:22">c</span>
+        <span style="--i:23">h</span>
+        <span style="--i:24">a</span>
+        <span style="--i:25">r</span>
+        <span style="--i:26">g</span>
+        <span style="--i:27">e</span>
+        <span style="--i:28">m</span>
+        <span style="--i:29">e</span>
+        <span style="--i:30">n</span>
+        <span style="--i:31">t</span>
+    </div>
+
+    <script>
+        const tips = [
+            "Astuce : Respectez les autres joueurs pour une meilleure expérience !",
+            "Astuce : Rejoignez notre Discord pour ne rien manquer.",
+            "Astuce : Utilisez votre Alter avec modération.",
+            "Astuce : Appuyez sur F4 pour accéder au menu du serveur.",
+            "Astuce : Les events Pandora sont annoncés en jeu et Discord !"
+        ];
+
+        function updateTip() {
+            const tip = document.getElementById("tipText");
+            tip.innerText = tips[Math.floor(Math.random() * tips.length)];
+        }
+
+        setInterval(updateTip, 9000);
+        updateTip();
+    </script>
+
+</body>
+</html>
