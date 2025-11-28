@@ -36,37 +36,48 @@
 
         /* Logo */
         .logo {
-        margin-top: 8vh;
-        animation: fadeIn 2s ease;
+            margin-top: 8vh;
+            animation: fadeIn 2s ease;
         }
         
         .logo img {
-            width: 400px;      /* Taille du logo */
-            max-width: 80%;    /* Responsivité */
+            width: 400px;
+            max-width: 80%;
             height: auto;
         }
-
 
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        /* Loading bar */
+        /* NEON Loading bar */
         .loading-container {
-            width: 40%;
-            margin: 40px auto;
-            height: 20px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
+            width: 45%;
+            margin: 60px auto 20px auto;
+            height: 18px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50px;
             overflow: hidden;
+            box-shadow: 0 0 20px rgba(150, 50, 255, 0.4),
+                        inset 0 0 15px rgba(150, 50, 255, 0.3);
+            position: relative;
         }
 
         .loading-bar {
-            width: 0%;
             height: 100%;
-            background: #9b4dff;
-            animation: load 10s ease-in-out forwards;
+            width: 0%;
+            background: linear-gradient(90deg, #b36bff, #a340ff, #b36bff);
+            background-size: 300% 100%;
+            animation: load 10s ease-in-out forwards, neonMove 3s infinite linear;
+            border-radius: 50px;
+            box-shadow: 0 0 20px #b36bff, 0 0 40px #a340ff;
+        }
+
+        @keyframes neonMove {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 0%; }
+            100% { background-position: 0% 0%; }
         }
 
         @keyframes load {
@@ -76,7 +87,7 @@
 
         /* Tips */
         .tip {
-            margin-top: 50px;
+            margin-top: 40px;
             font-size: 1.3rem;
             opacity: 0;
             animation: fadeTips 6s infinite;
@@ -97,7 +108,6 @@
     <div class="logo">
         <img src="logopandora.png" alt="Pandora Logo">
     </div>
-
 
     <div class="loading-container">
         <div class="loading-bar"></div>
